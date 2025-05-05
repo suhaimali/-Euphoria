@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exploria - Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="ICON" href="imges/Logo (3).png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      flex-wrap: wrap;
+    }
+
+    .logo a {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      font-weight: 700;
+      color: #000;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .header-icons a {
+      display: inline-block;
+    }
+
+    .header-icons img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .search-bar {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #00bcd4;
+      color: white;
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h2 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      background-color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #333;
+    }
+
+    .hero img {
+      margin-top: 40px;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    .promo-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 5%;
+    }
+
+    .promo-card {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .promo-card h4 {
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    .promo-card h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+
+    .promo-card p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .promo-card a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid white;
+      width: fit-content;
+      transition: 0.3s;
+    }
+
+    .promo-card a:hover {
+      opacity: 0.8;
+    }
+
+    .new-arrivals-section {
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .new-arrivals-section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .arrival-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .arrival-card {
+      width: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: #fff;
+      transition: transform 0.3s;
+    }
+
+    .arrival-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .arrival-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background-color: #f0f0f0;
+    }
+
+    .arrival-card h4 {
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .everyday-fashion-section {
+      background-color: #000;
+      color: white;
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .everyday-fashion-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .everyday-fashion-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .everyday-fashion-section button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      background-color: #201c1c;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .everyday-fashion-section button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .everyday-fashion-section img {
+      margin-top: 40px;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+    }
+
+    .category-section {
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .category-section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      max-width: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-section {
+      padding: 60px 5%;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      margin: 0 5%;
+    }
+
+    .brand-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+    }
+
+    .brand-header h2 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .brand-header img {
+      height: 40px;
+      width: auto;
+    }
+
+    .brand-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .brand-box {
+      width: 200px;
+      height: 150px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .brand-box:hover {
+      transform: scale(1.05);
+    }
+
+    .brand-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .feedback-section {
+      padding: 60px 5%;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    .feedback-section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .feedback-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .feedback-card {
+      width: 250px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: #fff;
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.3s;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feedback-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .feedback-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 15px 0 10px;
+      color: #000;
+    }
+
+    .feedback-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 60px 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul litick a:hover {
+      color: #fff;
+    }
+
+    .footer-column p {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      display: inline-block;
+      font-size: 24px;
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .header-icons {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .promo-card {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        background-size: cover;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero img {
+        max-height: 400px;
+      }
+
+      .arrival-card {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .arrival-card img {
+        height: 250px;
+      }
+
+      .everyday-fashion-section h2 {
+        font-size: 24px;
+      }
+
+      .everyday-fashion-section p {
+        font-size: 16px;
+      }
+
+      .everyday-fashion-section img {
+        max-height: 400px;
+      }
+
+      .category-section h2 {
+        font-size: 28px;
+      }
+
+      .gallery-item {
+        max-width: 300px;
+      }
+
+      .gallery-item img {
+        height: 250px;
+      }
+
+      .brand-section {
+        margin: 0 3%;
+      }
+
+      .brand-header h2 {
+        font-size: 24px;
+      }
+
+      .brand-header img {
+        height: 35px;
+      }
+
+      .brand-box {
+        width: 150px;
+        height: 100px;
+      }
+
+      .feedback-card {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .feedback-card img {
+        height: 200px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero h2 {
+        font-size: 14px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .hero img {
+        max-height: 300px;
+      }
+
+      .new-arrivals-section h2 {
+        font-size: 28px;
+      }
+
+      .arrival-card img {
+        height: 200px;
+      }
+
+      .everyday-fashion-section h2 {
+        font-size: 20px;
+      }
+
+      .everyday-fashion-section p {
+        font-size: 14px;
+      }
+
+      .everyday-fashion-section img {
+        max-height: 300px;
+      }
+
+      .category-section h2 {
+        font-size: 24px;
+      }
+
+      .gallery-item img {
+        height: 200px;
+      }
+
+      .brand-header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .brand-header h2 {
+        font-size: 20px;
+      }
+
+      .brand-header img {
+        height: 30px;
+      }
+
+      .brand-box {
+        width: 120px;
+        height: 80px;
+      }
+
+      .feedback-card img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="#">
+        <img src="imges/Logo (3).png" alt="Exploria Logo" />
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Shop</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">Combos</a></li>
+        <li><a href="#">Joggers</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <input type="text" placeholder="Search" class="search-bar" />
+      <a href="#"><img src="imges/wishlist.png" alt="Wishlist" /></a>
+      <a href="#"><img src="imges/cart.png" alt="Cart" /></a>
+      <a href="#"><img src="imges/account.png" alt="User" /></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>T-Shirt / Tops</h2>
+      <h1>Summer Value Pack</h1>
+      <p>cool / colorful / comfy</p>
+      <button>Shop Now</button>
+    </div>
+    <img src="imges/bg-1.png" alt="Banner Image" />
+  </section>
+
+  <section class="promo-section">
+    <div class="promo-card" style="background-image: url('imges/bg-2.jpg');">
+      <h4>Low Price</h4>
+      <h2>High Coziness</h2>
+      <p>UPTO 50% OFF</p>
+      <a href="#">Explore Items</a>
+    </div>
+    <div class="promo-card" style="background-image: url('imges/bg-3.jpg');">
+      <h4>Beyoung Presents</h4>
+      <h2>Breezy Summer Style</h2>
+      <p>UPTO 50% OFF</p>
+      <a href="#">Explore Items</a>
+    </div>
+  </section>
+
+  <section class="new-arrivals-section">
+    <h2>New Arrivals</h2>
+    <div class="arrival-grid">
+      <div class="arrival-card">
+        <img src="imges/img-1.jpg" alt="Casual Tee" />
+        <h4>Knitted Joggers</h4>
+      </div>
+      <div class="arrival-card">
+        <img src="imges/img-3.jpg" alt="Summer Joggers" />
+        <h4>Full Sleeve</h4>
+      </div>
+      <div class="arrival-card">
+        <img src="imges/img-4.jpg"* alt="Graphic Tank" />
+        <h4>Active T-shirts</h4>
+      </div>
+      <div class="arrival-card">
+        <img src="imges/bg-2.jpg" alt="Denim Shorts" />
+        <h4>Urban Shirt</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="everyday-fashion-section">
+    <h2>Euphoria Presents Everyday Wear Range</h2>
+    <p>We made your everyday fashion better in our journey to improve everyday fashion / Euphoria presents everyday wear range comfortable & affordable fashion 24/7</p>
+    <a href="#"><button>Shop Now</button></a>
+  </section>
+
+  <section class="category-section">
+    <h2>Men's Category</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="imges/img-5.jpg" alt="Men's Item 1" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/1111.jpg" alt="Men's Item 2" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/img-7.jpg" alt="Men's Item 3" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/23.jpg" alt="Men's Item 4" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/56.jpg" alt="Men's Item 5" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/12.jpg" alt="Men's Item 6" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/77.jpg" alt="Men's Item 7" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/98.jpg" alt="Men's Item 8" />
+      </div>
+    </div>
+  </section>
+
+  <section class="category-section">
+    <h2>Women's Category</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="imges/36.jpg" alt="Women's Item 1" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/55.jpg" alt="Women's Item 2" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/1.jpg" alt="Women's Item 3" />
+      </div>
+      <div class="gallery-item">
+        <img src="imges/2.jpg" alt="Women's Item 4" />
+      </div>
+    </div>
+  </section>
+
+  <section class="brand-section">
+    <div class="brand-header">
+      <h2>Top Brand</h2>
+    </div>
+    <div class="brand-content">
+      <div class="brand-box">
+        <img src="imges/H&M.jpg" alt="Brand 1 Logo" />
+      </div>
+      <div class="brand-box">
+        <img src="imges/nike.jpg" alt="Brand 2 Logo" />
+      </div>
+      <div class="brand-box">
+        <img src="imges/USPA.jpg" alt="Brand 3 Logo" />
+      </div>
+      <div class="brand-box">
+        <img src="imges/levis.jpg" alt="Brand 4 Logo" />
+      </div>
+    </div>
+  </section>
+
+  <section class="feedback-section">
+    <h2>Customer Feedback</h2>
+    <div class="feedback-grid">
+      <div class="feedback-card">
+        <img src="imges/feedback1.jpg" alt="Feedback 1" />
+        <h4>Felicity Butterfield</h4>
+        <p>Amazing quality and super comfy clothes! Highly recommend Exploria for everyday wear.</p>
+      </div>
+      <div class="feedback-card">
+        <img src="imges/feedback2.jpg" alt="Feedback 2" />
+        <h4>Ronoid Richards</h4>
+        <p>The joggers are fantastic, great fit and stylish. Will definitely shop again!</p>
+      </div>
+      <div class="feedback-card">
+        <img src="imges/feedback3.jpg" alt="Feedback 3" />
+        <h4>Savannah Lee</h4>
+        <p>Love the summer collection, vibrant colors and affordable prices. Great experience!</p>
+      </div>
+      <div class="feedback-card">
+        <img src="imges/feedback4.jpg" alt="Feedback 4" />
+        <h4>Liam Lim</h4>
+        <p>Fast shipping and excellent customer service. The shirts are perfect for casual outings.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-column">
+      <h3>Need Help</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Track Your Order</a></li>
+        <li><a href="#">Returns and Refunds</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">More Information</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Location</h3>
+      <p>123 Fashion Street, Style City, SC 12345</p>
+      <div class="footer-social">
+       
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
